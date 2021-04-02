@@ -4,6 +4,10 @@ using ACM.BL;
 
 namespace ACM.BLTest
 {
+    //-- Arrange
+    //-- Act
+    //-- Assert
+
     [TestClass]
     public class CustomerTest
     {
@@ -62,5 +66,41 @@ namespace ACM.BLTest
             Assert.AreEqual(expectedValue, ActualValue);
         }
         #endregion
+
+        #region Methods
+        [TestMethod]
+        public void ValidateValid()
+        {
+            //-- Arrange
+            var customer = new Customer
+            {
+                LastName="Jazmin",
+                EmailAddress="Jaz@Jaz.com"
+            };
+            var expectedResult = true;
+            //-- Act
+            var actualResult = customer.Validate();
+            //-- Assert
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void ValidateMissingLastName()
+        {
+            //-- Arrange
+            var customer = new Customer
+            {
+                EmailAddress = "Jaz@Jaz.com"
+            };
+            var expectedResult = false;
+            //-- Act
+            var actualResult = customer.Validate();
+            //-- Assert
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        #endregion
+
+
     }
 }
